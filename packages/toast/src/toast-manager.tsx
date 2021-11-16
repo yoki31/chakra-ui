@@ -1,3 +1,4 @@
+/* eslint-disable react/sort-comp */
 import { objectKeys } from "@chakra-ui/utils"
 import { AnimatePresence } from "framer-motion"
 import * as React from "react"
@@ -32,7 +33,7 @@ type CreateToastOptions = Partial<
     | "position"
     | "id"
     | "onCloseComplete"
-    | "wrapperStyle"
+    | "containerStyle"
   >
 >
 
@@ -172,7 +173,7 @@ export class ToastManager extends React.Component<Props, ToastState> {
       onRequestRemove: () => this.removeToast(String(id), position),
       status: options.status,
       requestClose: false,
-      wrapperStyle: options.wrapperStyle,
+      containerStyle: options.containerStyle,
     }
   }
 

@@ -77,7 +77,7 @@ export interface UseToastOptions {
   /**
    * Optional style overrides for the container wrapping the toast component.
    */
-  wrapperStyle?: React.CSSProperties
+  containerStyle?: React.CSSProperties
 }
 
 type UseToastOptionsNormalized = WithoutLogicalPosition<UseToastOptions>
@@ -87,7 +87,8 @@ export type IToast = UseToastOptions
 const Toast: React.FC<any> = (props) => {
   const { status, variant, id, title, isClosable, onClose, description } = props
 
-  const alertTitleId = typeof id !== "undefined" ? `toast-${id}-title` : undefined
+  const alertTitleId =
+    typeof id !== "undefined" ? `toast-${id}-title` : undefined
 
   return (
     <Alert

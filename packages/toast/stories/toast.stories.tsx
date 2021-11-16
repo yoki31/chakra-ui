@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react"
 import { Button, ButtonGroup } from "@chakra-ui/button"
 import { chakra, useColorMode } from "@chakra-ui/system"
 import { Alert } from "@chakra-ui/alert"
 import { Text } from "@chakra-ui/layout"
-import { createStandaloneToast, useToast } from "../src"
+import { createStandaloneToast, useToast, ToastId } from "../src"
 import theme from "../../../website/theme"
 
 export default {
@@ -248,11 +249,11 @@ export const UseToastWithDefaults = () => {
   return <Button onClick={() => toast()}>toast</Button>
 }
 
-export const UseToastWithCustomWrapperStyle = () => {
+export const UseToastWithContainerStyle = () => {
   const toast = useToast({
     position: "top",
     title: "Wrapper style is updated",
-    wrapperStyle: {
+    containerStyle: {
       width: "800px",
       maxWidth: "100%",
       border: "20px solid red",
@@ -263,7 +264,7 @@ export const UseToastWithCustomWrapperStyle = () => {
 }
 
 export const useToastCustomRenderUpdate = () => {
-  const [id, setId] = React.useState(null)
+  const [id, setId] = React.useState<ToastId | null | undefined>(null)
   const toast = useToast()
 
   React.useEffect(() => {
