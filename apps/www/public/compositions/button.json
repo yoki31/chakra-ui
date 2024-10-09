@@ -1,0 +1,11 @@
+{
+  "type": "composition",
+  "npmDependencies": [],
+  "fileDependencies": [],
+  "id": "button",
+  "file": {
+    "name": "button.tsx",
+    "content": "import {\n  AbsoluteCenter,\n  Button as ChakraButton,\n  Span,\n  Spinner,\n} from \"@chakra-ui/react\"\nimport type { ButtonProps as ChakraButtonProps } from \"@chakra-ui/react\"\nimport { forwardRef } from \"react\"\n\ninterface ButtonLoadingProps {\n  loading?: boolean\n  loadingText?: React.ReactNode\n}\n\nexport interface ButtonProps extends ChakraButtonProps, ButtonLoadingProps {}\n\nexport const Button = forwardRef<HTMLButtonElement, ButtonProps>(\n  function Button(props, ref) {\n    const { loading, disabled, loadingText, children, ...rest } = props\n\n    const trulyDisabled = loading || disabled\n    const showSpinner = loading && !loadingText\n\n    return (\n      <ChakraButton disabled={trulyDisabled} ref={ref} {...rest}>\n        {showSpinner && <ButtonSpinner />}\n        {loading\n          ? loadingText || <Span opacity={0}>{children}</Span>\n          : children}\n      </ChakraButton>\n    )\n  },\n)\n\nconst ButtonSpinner = () => (\n  <AbsoluteCenter display=\"inline-flex\">\n    <Spinner boxSize=\"1em\" color=\"currentColor\" />\n  </AbsoluteCenter>\n)\n"
+  },
+  "component": "Button"
+}

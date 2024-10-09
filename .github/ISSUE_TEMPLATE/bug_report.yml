@@ -1,6 +1,5 @@
 name: "Bug Report"
 description: "File a bug report"
-labels: ["Type: Bug 🐛", "needs triage"]
 body:
   - type: "markdown"
     attributes:
@@ -12,7 +11,7 @@ body:
 
         We're all volunteers here, so help us help you by taking the time to
         accurately fill out this template. ❤️
-  - type: "input"
+  - type: "textarea"
     id: "description"
     attributes:
       label: "Description"
